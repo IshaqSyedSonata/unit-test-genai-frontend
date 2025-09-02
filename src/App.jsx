@@ -26,8 +26,7 @@ function App() {
       body: JSON.stringify({ code, language }),
     });
     const data = await response.json();
-    console.log(data);
-    setOutput(data.tests || 'No test cases generated.');
+    setOutput(data?.tests?.error ?  data?.tests?.error?.message ? data?.tests?.error?.message : data?.tests?.error : data?.tests );
   };
 
   return (
