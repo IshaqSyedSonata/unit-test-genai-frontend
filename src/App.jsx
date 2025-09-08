@@ -9,7 +9,7 @@ function App() {
   const [code, setCode] = useState('');
   const [language, setLanguage] = useState('python');
   const [output, setOutput] = useState('');
-  const [apiType, setApiType] = useState('paid');
+  const [apiType, setApiType] = useState('free');
 
 //   $body = '{ "code": "def add(a, b): return a + b", "language": "python" }'
 // $headers = @{ "Content-Type" = "application/json" }
