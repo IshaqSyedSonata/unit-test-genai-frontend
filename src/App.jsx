@@ -41,8 +41,9 @@ function App() {
         onChange={(e, val) => val && setApiType(val)}
         sx={{ mb: 2 }}
       >
-        <ToggleButton value="paid">OpenAI</ToggleButton>
         <ToggleButton value="free">GEMINI AI</ToggleButton>
+        <ToggleButton value="paid">OpenAI</ToggleButton>
+        
       </ToggleButtonGroup>
       <LanguageSelector language={language} setLanguage={setLanguage} />
       <FileUploader setCode={setCode} />
