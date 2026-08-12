@@ -12,9 +12,12 @@ function App() {
   const [apiType, setApiType] = useState('openai');
 
   const handleGenerate = async () => {
-    const endpoint = apiType === 'openai'
-      ? 'http://localhost:3000/openai-unit-test-case-generator'
-      : 'http://localhost:3000/gemini-unit-test-case-generator';
+    const endpointByApiType: Record<string, string> = {
+      openai: 'http://localhost:3000/openai-unit-test-case-generator',
+      gemini: 'http://localhost:3000/gemini-unit-test-case-generator',
+      cursor: 'http://localhost:3000/cursor-unit-test-case-generator',
+    };
+    const endpoint = endpointByApiType[apiType] || endpointByApiType.openai;
     const response = await fetch(endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -38,8 +41,7 @@ function App() {
       >
         <ToggleButton value="openai">OpenAI</ToggleButton>
         <ToggleButton value="gemini">GEMINI AI</ToggleButton>
-        
-        
+        <ToggleButton value="cursor">Cursor</ToggleButton>
       </ToggleButtonGroup>
       <LanguageSelector language={language} setLanguage={setLanguage} />
       <FileUploader setCode={setCode} />

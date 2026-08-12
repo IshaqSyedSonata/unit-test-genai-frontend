@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
-type Language = 'python' | 'java' | 'csharp';
+type Language = 'python' | 'java' | 'csharp' | 'node';
 
 interface LanguageSelectorProps {
   language: Language | string;
@@ -19,7 +19,7 @@ const LanguageSelector = ({ language, setLanguage }: LanguageSelectorProps) => (
       <MenuItem value="python">Python</MenuItem>
       <MenuItem value="java">Java</MenuItem>
       <MenuItem value="csharp">C#</MenuItem>
-      <MenuItem value="csharp">Node</MenuItem>
+      <MenuItem value="node">Node</MenuItem>
     </Select>
   </FormControl>
 );
