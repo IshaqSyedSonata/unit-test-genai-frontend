@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { Button } from '@mui/material';
 
-const FileUploader = ({ setCode }) => {
-  const handleFileUpload = async (e) => {
-    const file = e.target.files[0];
+interface FileUploaderProps {
+  setCode: (code: string) => void;
+}
+
+const FileUploader = ({ setCode }: FileUploaderProps) => {
+  const handleFileUpload = async (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
     if (file) {
       const text = await file.text();
       setCode(text);

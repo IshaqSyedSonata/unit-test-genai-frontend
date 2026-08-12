@@ -1,7 +1,12 @@
 import React from 'react';
 import { TextField } from '@mui/material';
 
-const CodeInput = ({ code, setCode }) => (
+interface CodeInputProps {
+  code: string;
+  setCode: (code: string) => void;
+}
+
+const CodeInput = ({ code, setCode }: CodeInputProps) => (
   <TextField
     label="Paste Code Snippet"
     multiline

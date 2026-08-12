@@ -9,17 +9,12 @@ function App() {
   const [code, setCode] = useState('');
   const [language, setLanguage] = useState('python');
   const [output, setOutput] = useState('');
-  const [apiType, setApiType] = useState('free');
-
-//   $body = '{ "code": "def add(a, b): return a + b", "language": "python" }'
-// $headers = @{ "Content-Type" = "application/json" }
-// $response = Invoke-WebRequest -Uri "http://localhost:3000/generate-tests" -Method POST -Headers $headers -Body $body
-// Write-Output $response.Content
+  const [apiType, setApiType] = useState('openai');
 
   const handleGenerate = async () => {
-    const endpoint = apiType === 'paid'
-      ? 'http://localhost:3000/generate-tests'
-      : 'http://localhost:3000/free-generate-test';
+    const endpoint = apiType === 'openai'
+      ? 'http://localhost:3000/openai-unit-test-case-generator'
+      : 'http://localhost:3000/gemini-unit-test-case-generator';
     const response = await fetch(endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -41,8 +36,9 @@ function App() {
         onChange={(e, val) => val && setApiType(val)}
         sx={{ mb: 2 }}
       >
-        <ToggleButton value="free">GEMINI AI</ToggleButton>
-        <ToggleButton value="paid">OpenAI</ToggleButton>
+        <ToggleButton value="openai">OpenAI</ToggleButton>
+        <ToggleButton value="gemini">GEMINI AI</ToggleButton>
+        
         
       </ToggleButtonGroup>
       <LanguageSelector language={language} setLanguage={setLanguage} />
